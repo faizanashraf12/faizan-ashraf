@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faizan Ashraf | SDET & Software Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --background: #0a0a0a;
+            --foreground: #fafafa;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --accent-secondary: #8b5cf6;
+            --muted: #a1a1aa;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover {
+            color: var(--foreground);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            margin-bottom: 2rem;
+            width: fit-content;
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(3.5rem, 8vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+            background: linear-gradient(to right, #fff 30%, var(--accent-light) 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeUp 0.8s ease-out 0.1s both;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            animation: fadeUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            animation: fadeUp 0.8s ease-out 0.3s both;
+        }
+
+        .hero-highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        .hero-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            animation: fadeUp 0.8s ease-out 0.4s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--muted);
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 0.75rem 1.25rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+        }
+
+        .contact-item:hover {
+            color: var(--foreground);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        .section {
+            padding: 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--foreground), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+        }
+
+        .section-divider {
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--card-border), transparent);
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--muted);
+            font-weight: 400;
+            text-align: center;
+        }
+
+        /* SDET & Developer Dual Role Section */
+        .dual-role {
+            background: linear-gradient(180deg, var(--background) 0%, rgba(10, 10, 10, 0.95) 100%);
+            position: relative;
+        }
+
+        .dual-role::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+        }
+
+        .role-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .role-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .role-card.sdet::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        }
+
+        .role-card.developer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-secondary), #a78bfa);
+        }
+
+        .role-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-icon.sdet {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+        }
+
+        .role-icon.developer {
+            background: linear-gradient(135deg, var(--accent-secondary), #a78bfa);
+            color: white;
+        }
+
+        .role-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .role-description {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .role-skill {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--foreground);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .role-skill:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Hybrid Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            margin: 10px;;
+        }
+
+        .skill-category:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .skill-category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.125rem;
+        }
+
+        .skill-category-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-light);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--accent-secondary));
+            border-radius: 2px;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 4px solid var(--background);
+            box-shadow: 0 0 0 2px var(--accent-light);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-role {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .experience-company {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .experience-date {
+            background: var(--card-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid var(--card-border);
+        }
+
+        .experience-description {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .experience-description ul {
+            padding-left: 1.5rem;
+        }
+
+        .experience-description li {
+            margin-bottom: 0.75rem;
+            position: relative;
+        }
+
+        .experience-description li::before {
+            content: '▸';
+            position: absolute;
+            left: -1.5rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* SDET Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--muted);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .role-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .hero {
+                padding: 0 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.75rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero-contact {
+                flex-direction: column;
+            }
+
+            .contact-item {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .role-card,
+            .skill-category,
+            .project-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="logo">
+            <div class="logo-icon">FA</div>
+            <span>Faizan Ashraf</span>
+        </div>
+        <div class="nav-links">
+            <a href="#dual-role" class="nav-link">Hybrid Role</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#education" class="nav-link">Education</a>
+        </div>
+        <a href="#contact" class="nav-cta">Get in Touch</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">
+            <i class="fas fa-code-branch"></i>
+            SDET & Software Developer
+        </div>
+        <h1 class="hero-title">FAIZAN ASHRAF</h1>
+        <div class="hero-subtitle">Bridging Development & Quality Engineering</div>
+        <p class="hero-description">
+            <span class="hero-highlight">Software Development Engineer in Test</span> with 5+ years of experience
+            building
+            robust test automation frameworks while developing scalable applications. I combine
+            development expertise with quality assurance to deliver production-ready,
+            high-quality software.
+        </p>
+        <div class="hero-contact">
+            <a href="mailto:falconfaizan11@gmail.com" class="contact-item">
+                <i class="fas fa-envelope"></i>
+                falconfaizan11@gmail.com
+            </a>
+            <a href="tel:8899522778" class="contact-item">
+                <i class="fas fa-phone"></i>
+                8899522778
+            </a>
+            <a href="https://linkedin.com/in/faizan-zargar-1360a71ab" target="_blank" class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                LinkedIn Profile
+            </a>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                Jammu and Kashmir, India
+            </div>
+        </div>
+    </section>
+
+    <!-- Dual Role Section -->
+    <section id="dual-role" class="section dual-role">
+        <div class="section-header">
+            <div class="section-divider"></div>
+            <h2 class="section-title">The Hybrid SDET</h2>
+            <div class="section-divider"></div>
+        </div>
+        <p class="section-subtitle">Combining development expertise with quality engineering</p>
+
+        <div class="role-cards">
+            <!-- SDET Card -->
+            <div class="role-card sdet fade-in">
+                <div class="role-icon sdet">
+                    <i class="fas fa-vial"></i>
+                </div>
+                <h3 class="role-title">Software Development Engineer in Test</h3>
+                <p class="role-description">
+                    Building robust test automation frameworks, developing comprehensive test strategies,
+                    and ensuring software quality throughout the development lifecycle. Focus on
+                    scalability, maintainability, and integration with CI/CD pipelines.
+                </p>
+                <div class="role-skills">
+                    <span class="role-skill">Test Automation</span>
+                    <span class="role-skill">CI/CD Pipeline</span>
+                    <span class="role-skill">Quality Strategy</span>
+                    <span class="role-skill">Performance Testing</span>
+                </div>
+            </div>
+
+            <!-- Developer Card -->
+            <div class="role-card developer fade-in">
+                <div class="role-icon developer">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 class="role-title">Software Developer</h3>
+                <p class="role-description">
+                    Developing scalable applications, creating RESTful APIs, and building
+                    full-stack solutions. Emphasis on clean architecture, performance optimization,
+                    and implementing best practices in software development.
+                </p>
+                <div class="role-skills">
+                    <span class="role-skill">Full-Stack Development</span>
+                    <span class="role-skill">API Design</span>
+                    <span class="role-skill">Vue JS</span>
+                    <span class="role-skill">Express JS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hybrid Skills -->
+        <div class="section-header" style="margin-top: 4rem;">
+            <div class="section-divider"></div>
+            <h2 class="section-title">Hybrid Skills Matrix</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="two-column">
+            <!-- Technical Skills Column -->
+            <div id="skills" class="fade-in">
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="skill-category-title">Test Automation</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Playwright (TypeScript)</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">JMeter</span>
+                        <span class="skill-tag">Selenium</span>
+                        <span class="skill-tag">Rest Assured</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="skill-category-title">Development</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Vue.js</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Express JS</span>
+                        <span class="skill-tag">React Native</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="skill-category-title">Infrastructure & DevOps</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Jenkins CI/CD</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">Memurai</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testing & Quality Column -->
+            <div class="fade-in">
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-vial-virus"></i>
+                        </div>
+                        <h3 class="skill-category-title">Testing Types</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">UI Automation</span>
+                        <span class="skill-tag">API Testing</span>
+                        <span class="skill-tag">Performance Testing</span>
+                        <span class="skill-tag">Load Testing</span>
+                        <span class="skill-tag">Security Testing</span>
+                        <span class="skill-tag">Regression Testing</span>
+                        <span class="skill-tag">Integration Testing</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="skill-category-title">Database & Cloud</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">SQL Queries</span>
+                        <span class="skill-tag">AWS</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3 class="skill-category-title">Test Management</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">X-Ray</span>
+                        <span class="skill-tag">Test Case Design</span>
+                        <span class="skill-tag">Bug Tracking</span>
+                        <span class="skill-tag">Quality Metrics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="section-header">
+            <div class="section-divider"></div>
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="experience-timeline">
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">QA Engineer II (SDET Focus)</h3>
+                        <div class="experience-company">BQE Software – Srinagar, Jammu and Kashmir, India</div>
+                    </div>
+                    <div class="experience-date">February 2023 – Present</div>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li><strong>SDET Achievement:</strong> Designed and developed BQETestX Portal, a browser-based
+                            web application to execute automation test cases, leveraging Vue.js for the frontend and
+                            Playwright with C# for the automation suite.</li>
+                        <li><strong>Automation Framework:</strong> Developed and executed automated UI test cases using
+                            Playwright Framework with TypeScript to ensure functionality, smoke testing, and regression
+                            testing for web applications.</li>
+                        <li>Designed and implemented API automation test cases using Playwright and Postman for API
+                            functionality and performance testing.</li>
+                        <li>Created and maintained test plans, test cases, and test scripts for functional testing,
+                            regression testing, and performance testing to ensure comprehensive coverage.</li>
+                        <li>Performed manual testing of web applications to identify and resolve functional defects and
+                            improve usability.</li>
+                        <li>Conducted testing of HangFire for background job management in the application.</li>
+                        <li>Tested Federated SSO integration using OneLogin to validate secure user authentication and
+                            access control.</li>
+                        <li>
+                            Tested TempData management using Redis Cache to verify data consistency and caching
+                            functionality across sessions. </li>
+                        <li>Utilised Jira for bug tracking, test case management, and effective communication with
+                            development teams to address and resolve issues in a timely manner.</li>
+                        <li>Maintained and optimised Jenkins CI/CD pipelines to streamline integration and deployment
+                            processes, enhancing the efficiency of software delivery.</li>
+                        <li>Led data migration testing to ensure the integrity and reliability of data during system
+                            transitions, ensuring minimal disruption and data loss.</li>
+                        <li>Tested Data centre segregation and separate deployment processes to ensure system stability,
+                            data security, and scalability across multiple environments.</li>
+                        <li>Designed and developed BQETestX Portal - a full-featured test automation platform with
+                            Vue.js
+                            frontend and Playwright/C# backend, reducing manual testing efforts by 60%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">Junior Software Developer</h3>
+                        <div class="experience-company">ECOM Express – Gurugram, Haryana, India</div>
+                    </div>
+                    <div class="experience-date">January 2020 – December 2021</div>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li><strong>Development:</strong> Built new features and enhanced Python applications focusing
+                            on scalability and performance</li>
+                        <li><strong>API Development:</strong> Created RESTful APIs using Django Framework handling
+                            high-volume e-commerce transactions</li>
+                        <li><strong>Cloud Infrastructure:</strong> Deployed and managed applications on AWS,
+                            implementing auto-scaling and monitoring</li>
+                        <li><strong>Testing Integration:</strong> Introduced automated testing practices into
+                            development workflow</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">Junior Software Developer (Part-time)</h3>
+                        <div class="experience-company">Sphere4Geeks – Jammu and Kashmir, India</div>
+                    </div>
+                    <div class="experience-date">2017 – 2019</div>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li><strong>Full-Stack Development:</strong> Built enterprise applications using PHP,
+                            JavaScript, CSS, and HTML5</li>
+                        <li><strong>Database Design:</strong> Created efficient MySQL database schemas and optimized SQL
+                            queries</li>
+                        <li><strong>Quality Focus:</strong> Implemented testing strategies alongside development work
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SDET Projects -->
+    <section id="projects" class="section">
+        <div class="section-header">
+            <div class="section-divider"></div>
+            <h2 class="section-title">SDET & Development Projects</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <h3 class="project-title">BQETestX Portal</h3>
+                <p class="project-description">
+                    Complete test automation platform with browser-based test execution, real-time reporting,
+                    and integration with CI/CD pipelines. Built with Vue.js frontend and Playwright/C# backend.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Vue.js</span>
+                    <span class="skill-tag">Playwright</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">Jenkins</span>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <h3 class="project-title">API Test Automation Framework</h3>
+                <p class="project-description">
+                    Custom-built framework for API testing with support for performance benchmarking,
+                    automated test data generation, and integration with Postman collections.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Postman</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">REST APIs</span>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <h3 class="project-title">CI/CD Pipeline Optimization</h3>
+                <p class="project-description">
+                    Implemented parallel test execution, intelligent test selection, and automated
+                    deployment strategies reducing overall build and deployment times by 40%.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Jenkins</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Git</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section id="education" class="section">
+        <div class="section-header">
+            <div class="section-divider"></div>
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="two-column">
+            <div class="fade-in">
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="skill-category-title">Education</h3>
+                    </div>
+                    <div style="padding: 1rem 0;">
+                        <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Bachelor of Engineering</h4>
+                        <div style="color: var(--accent); font-weight: 500; margin-bottom: 0.5rem;">
+                            Baba Ghulam Shah Badshah University, Rajouri, India
+                        </div>
+                        <div style="color: var(--muted); margin-bottom: 1rem;">
+                            <div>Major: Computer Science</div>
+                            <div>Graduated with 71%</div>
+                        </div>
+                        <div class="experience-date">2015 – 2019</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fade-in">
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="skill-category-title">Certifications</h3>
+                    </div>
+                    <div style="padding: 1rem 0;">
+                        <div style="margin-bottom: 1rem;">
+                            <h4 style="font-size: 1.125rem; margin-bottom: 0.25rem;">Industry-Oriented Training in Web
+                                Development</h4>
+                            <div style="color: var(--muted); font-size: 0.95rem;">Professional Certification</div>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <h4 style="font-size: 1.125rem; margin-bottom: 0.25rem;">Industry-Oriented Training in
+                                Python Programming</h4>
+                            <div style="color: var(--muted); font-size: 0.95rem;">Advanced Python & Data Exploration
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.125rem; margin-bottom: 0.25rem;">Python Django 3 Web Development
+                            </h4>
+                            <div style="color: var(--muted); font-size: 0.95rem;">REST API Development & Deployment
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="logo" style="justify-content: center; margin-bottom: 2rem;">
+            <div class="logo-icon">FA</div>
+            <span>Faizan Ashraf</span>
+        </div>
+        <p style="font-size: 1.125rem; margin-bottom: 1.5rem; color: var(--foreground);">
+            SDET & Software Developer
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;">
+            <a href="mailto:falconfaizan11@gmail.com" style="color: var(--muted); text-decoration: none;">
+                falconfaizan11@gmail.com
+            </a>
+            <span style="color: var(--card-border);">|</span>
+            <a href="tel:8899522778" style="color: var(--muted); text-decoration: none;">
+                8899522778
+            </a>
+            <span style="color: var(--card-border);">|</span>
+            <span style="color: var(--muted);">
+                Jammu and Kashmir, India
+            </span>
+        </div>
+        <p style="color: var(--muted); font-size: 0.95rem;">
+            © 2023 Faizan Ashraf. Bridging Development & Quality Engineering.
+        </p>
+    </footer>
+
+    <script>
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add hover effect to role cards
+        document.querySelectorAll('.role-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-12px)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(-10px)';
+            });
+        });
+    </script>
+</body>
+
+</html>
